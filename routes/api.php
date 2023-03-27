@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\PlayerController;
+use App\Http\Controllers\API\TournamentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,6 @@ Route::get('/players/{id}', [PlayerController::class, 'show']);
 Route::post('/players', [PlayerController::class, 'store']);
 Route::put('/players/{id}', [PlayerController::class, 'update']);
 Route::delete('/players/{id}', [PlayerController::class, 'destroy']);
+
+Route::post('/tournaments', [TournamentController::class, 'store']);
+

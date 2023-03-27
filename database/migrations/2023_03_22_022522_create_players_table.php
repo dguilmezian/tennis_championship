@@ -36,3 +36,4 @@ class CreatePlayersTable extends Migration
         Schema::dropIfExists('players');
     }
 }
+

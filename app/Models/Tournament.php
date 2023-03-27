@@ -13,9 +13,20 @@ class Tournament extends Model
 
     protected $table = 'tournaments';
     protected $fillable = [
-        'number_of_players',
         'number_of_rounds',
         'gender',
         'title'
     ];
+
+    public static function generateTournament($id, $players)
+    {
+
+    }
+
+
+    public function rounds()
+    {
+        return $this->hasMany(Round::class);
+    }
+
 }

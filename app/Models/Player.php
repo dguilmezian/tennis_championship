@@ -29,4 +29,8 @@ class Player extends Model
         });
     }
 
+    public function matchs(){
+        return $this->hasMany(Match::class);
+    }
+
 }
