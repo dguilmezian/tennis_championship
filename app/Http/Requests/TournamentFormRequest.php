@@ -64,20 +64,18 @@ class TournamentFormRequest extends FormRequest
             $players_not_found = array();
             $players_mismatch_gender = array();
             foreach ($players as $player) {
-                $participant = Player::findOrFail($player);
+                $participant = Player::find($player);
                 if(!isset($participant)){
                     $players_not_found[]=$player;
                 }elseif ($gender != $participant->gender) {
-                    var_dump($participant->gender);
-                    die();
                     $players_mismatch_gender[] = $participant->id;
                 }
             }
             if (count($players_mismatch_gender) > 0) {
-                $validator->errors()->add('players_gender', 'This players' . json_encode($players_mismatch_gender) . ' mismatch the tournament gender');
+                $validator->errors()->add('players_gender', 'This players with id = ' . json_encode($players_mismatch_gender) . ' mismatch the tournament gender');
             }
             if(count($players_not_found)>0){
-                $validator->errors()->add('players_not_found', 'This players' . json_encode($players_not_found) . ' does not exists in database');
+                $validator->errors()->add('players_not_found', 'This players with id = ' . json_encode($players_not_found) . ' not exists in database');
             }
         }
     }

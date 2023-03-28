@@ -21,13 +21,15 @@ class CreateMatchsTable extends Migration
             $table->integer('player_2_stats')->nullable();
             $table->tinyInteger('lucky_player')->nullable();
             $table->integer('luck')->nullable();
-            $table->unsignedBigInteger('winner');
+            $table->unsignedBigInteger('winner')->nullable();
             $table->unsignedBigInteger('round_id')->nullable();
             $table->foreign('id_player_1')->references('id')->on('players');
             $table->foreign('id_player_2')->references('id')->on('players');
             $table->foreign('winner')->references('id')->on('players');
             $table->foreign('round_id')->references('id')->on('rounds');
             $table->timestamps();
+            $table->softDeletes('deleted_at', 6)->nullable();
+
         });
     }
 

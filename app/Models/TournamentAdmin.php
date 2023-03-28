@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-
-use PhpParser\Node\Expr\Cast\Object_;
-
 class TournamentAdmin
 {
 
@@ -30,7 +27,17 @@ class TournamentAdmin
 
             $round_number++;
         }
-        $tournament = Tournament::with('rounds.matchs')->find($tournament->id);
+
+
+        return self::getTournament($tournament->id);
+    }
+
+
+    public static function getTournament($id_tournament){
+        $tournament = Tournament::with('rounds.matchs')->find($id_tournament);
+        if(!isset($tournament)){
+            return null;
+        }
         foreach($tournament->rounds as $round){
             foreach($round->matchs as $match){
                 $match->player_1=Player::select('name')->where('id',$match->id_player_1)->first();
@@ -40,7 +47,6 @@ class TournamentAdmin
                 }
             }
         }
-
         return $tournament;
     }
 }
