@@ -14,6 +14,6 @@
 4. Ejecutar el comando 'composer install'
 5. Ejecutar el comando 'php artisan key:generate'
 6. Ejecutar: php artisan migrate
-7. Ejecutar: php artisan db:seed --class=PlayersTableSeed
+7. Ejecutar: php artisan db:seed --class=PlayersTableSeeder
 11. Ejecutar el comando 'php artisan serve'
 12. La app se estará ejecutando en http://localhost:8000 
