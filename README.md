@@ -18,4 +18,9 @@
 11. Ejecutar el comando 'php artisan serve'
 12. La app se estará ejecutando en http://localhost:8000 
 
-#####Se proporciona el archivo tennis_championship.yaml para importar en swagger
+###Aclaraciones
+1. Se proporciona el archivo tennis_championship.yaml para importar en swagger. https://editor.swagger.io/
+2. Logica usada para la suerte. Se hace un random entre 1 y 2, si toca 1 el jugador con suerte es el 1, si no el 2. Se hace un random de 1 a 100, ese numero es sumado al total de sus estadisticas. 
+3. El jugador ganador es el de mayor estadísticas.
+4. No se pueden realizar torneos mixtos.
+5. La cantidad de jugadores por torneo es 2 elevado a la cantidad de rondas. 
