@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Torneo de tennis
+  version: "1.0"
+paths:
+  /api/tournaments:
+    post:
+      summary: Crea un nuevo torneo
+      description: Crea un nuevo torneo con los detalles proporcionados en el cuerpo de la solicitud
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "mi torneo"
+                  description: El título del torneo
+                gender:
+                  type: integer
+                  example: 1
+                  description: El género del torneo. 0 femenino, 1 masculino
+                number_of_rounds:
+                  type: integer
+                  example: 2
+                  description: El número de rondas en el torneo
+                players:
+                  type: array
+                  items:
+                    type: integer
+                  example: [1, 2, 3, 4]
+                  description: Los ID de los jugadores que participarán en el torneo. La cantidad de jugadores tiene que ser 2 elevado a la cantidad de rondas. 
+      responses:
+        '200':
+          description: El torneo ha sido creado exitosamente
+        '400':
+          description: La solicitud es incorrecta o incompleta
+        '500':
+          description: Un error interno del servidor ha ocurrido
+  /players:
+    post:
+      summary: Crea un nuevo jugador
+      parameters:
+        - name: name
+          in: formData
+          type: string
+          required: true
+          description: Nombre del jugador
+        - name: skill_level
+          in: formData
+          type: integer
+          required: true
+          description: Nivel de habilidad del jugador
+        - name: gender
+          in: formData
+          type: integer
+          required: true
+          description: Género del jugador. 0 femenino, 1 masculino
+        - name: velocity
+          in: formData
+          type: integer
+          required: true
+          description: Velocidad del jugador
+        - name: reaction
+          in: formData
+          type: integer
+          required: true
+          description: Reacción del jugador
+        - name: strength
+          in: formData
+          type: integer
+          required: true
+          description: Fuerza del jugador
+      responses:
+        '200':
+          description: Jugador creado exitosamente
+        '400':
+          description: Error en los datos proporcionados
+    get:
+      summary: Obtiene los jugadores y sus atributos
+      responses:
+        '200':
+          description: Lista de jugadores obtenida exitosamente
+        '400':
+          description: Error en los parámetros de la solicitud
+  /players/{id}:
+    get:
+      summary: Obtiene los detalles de un jugador específico
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ID del jugador a recuperar
+          required: true
+      responses:
+        '200':
+          description: Datos del jugador recuperados exitosamente
+        '404':
+          description: Jugador no encontrado  

@@ -26,7 +26,7 @@ class PlayerRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'skill_level' => 'required|integer|between:0,100',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|integer|between:0,1',
             'velocity' => 'required|integer',
             'strength' => 'required|integer',
             'reaction' => 'required|integer'

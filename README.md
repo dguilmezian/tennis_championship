@@ -17,3 +17,5 @@
 7. Ejecutar: php artisan db:seed --class=PlayersTableSeeder
 11. Ejecutar el comando 'php artisan serve'
 12. La app se estará ejecutando en http://localhost:8000 
+
+#####Se proporciona el archivo tennis_championship.yaml para importar en swagger
